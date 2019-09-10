@@ -41,3 +41,8 @@ Post object Exemple:
 - Edit distance : http://127.0.0.1:80/distance/{id}/edit
 - delete distance : http://127.0.0.1:80/distance/delete/{id}/
 
+# Python Micro service is accessible at :
+
+    http://127.0.0.1:8088/api/distance/{lat;lng}/{lat;lng}
+    
+    ex: http://127.0.0.1:8088/api/distance/48.8383;2.29088/40.5217;-82.1505

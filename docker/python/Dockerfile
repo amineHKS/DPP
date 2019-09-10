@@ -11,6 +11,6 @@ RUN pip install --upgrade pip  \
 
 COPY docker/python/app/app.py /var/www/html/app.py
 
-EXPOSE 5000
+EXPOSE 8088
 
-CMD ["python", "app.py", "runserver", "0.0.0.0:5000"]
+CMD ["python", "app.py"]
