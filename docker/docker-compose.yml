@@ -16,6 +16,21 @@ services:
     networks:
       - oney
 
+  nginx-py:
+    build:
+      context: ..
+      dockerfile: docker/nginx-py/Dockerfile
+    container_name: oney-nginx-py
+    volumes:
+      - my-py:/var/www/html
+    ports:
+      - 8080:8080
+    restart: always
+    depends_on:
+      - python
+    networks:
+      - oney-py
+
   php:
     build:
       context: ..
@@ -29,6 +44,7 @@ services:
       - my-app:/var/www/html
     depends_on:
       - mysql
+      - python
     networks:
       - oney
 
@@ -56,16 +72,18 @@ services:
       dockerfile: docker/python/Dockerfile
     container_name: oney-python
     ports:
-      - 5000:5000
+      - 8088:8088
     expose:
-      - 5000
+      - 8088
     volumes:
       - my-py:/var/www/html
     networks:
-      - oney
+      - oney-py
 
 networks:
   oney:
+    driver: "bridge"
+  oney-py:
     driver: "bridge"
 volumes:
   my-db:
