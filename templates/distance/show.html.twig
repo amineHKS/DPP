@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Distance{% endblock %}
+
+{% block body %}
+    <h1>Distance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ distance.id }}</td>
+            </tr>
+            <tr>
+                <th>Address_ip</th>
+                <td>{{ distance.addressIp }}</td>
+            </tr>
+            <tr>
+                <th>Address_number</th>
+                <td>{{ distance.addressNumber }}</td>
+            </tr>
+            <tr>
+                <th>Address_street</th>
+                <td>{{ distance.addressStreet }}</td>
+            </tr>
+            <tr>
+                <th>Address_postal_code</th>
+                <td>{{ distance.addressPostalCode }}</td>
+            </tr>
+            <tr>
+                <th>Address_city</th>
+                <td>{{ distance.addressCity }}</td>
+            </tr>
+            <tr>
+                <th>Address_country</th>
+                <td>{{ distance.addressCountry }}</td>
+            </tr>
+            <tr>
+                <th>Distance_result</th>
+                <td>{{ distance.distanceResult }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('distance_index') }}">back to list</a>
+
+    <a href="{{ path('distance_edit', {'id': distance.id}) }}">edit</a>
+
+    {{ include('distance/_delete_form.html.twig') }}
+{% endblock %}

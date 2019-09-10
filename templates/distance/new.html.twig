@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Distance{% endblock %}
+
+{% block body %}
+    <h1>Create new Distance</h1>
+
+    {{ include('distance/_form.html.twig') }}
+
+    <a href="{{ path('distance_index') }}">back to list</a>
+{% endblock %}

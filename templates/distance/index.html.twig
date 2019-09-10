@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Distance index{% endblock %}
+
+{% block body %}
+    <h1>Distance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address_ip</th>
+                <th>Address_number</th>
+                <th>Address_street</th>
+                <th>Address_postal_code</th>
+                <th>Address_city</th>
+                <th>Address_country</th>
+                <th>Distance_result</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for distance in distances %}
+            <tr>
+                <td>{{ distance.id }}</td>
+                <td>{{ distance.addressIp }}</td>
+                <td>{{ distance.addressNumber }}</td>
+                <td>{{ distance.addressStreet }}</td>
+                <td>{{ distance.addressPostalCode }}</td>
+                <td>{{ distance.addressCity }}</td>
+                <td>{{ distance.addressCountry }}</td>
+                <td>{{ distance.distanceResult }}</td>
+                <td>
+                    <a href="{{ path('distance_show', {'id': distance.id}) }}">show</a>
+                    <a href="{{ path('distance_edit', {'id': distance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('distance_new') }}">Create new</a>
+{% endblock %}

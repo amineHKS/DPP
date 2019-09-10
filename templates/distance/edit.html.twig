@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Distance{% endblock %}
+
+{% block body %}
+    <h1>Edit Distance</h1>
+
+    {{ include('distance/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('distance_index') }}">back to list</a>
+
+    {{ include('distance/_delete_form.html.twig') }}
+{% endblock %}

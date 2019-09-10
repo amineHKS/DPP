@@ -1,0 +1,73 @@
+version: '3.7'
+
+services:
+  nginx:
+    build:
+      context: ..
+      dockerfile: docker/nginx/Dockerfile
+    container_name: oney-nginx
+    volumes:
+      - my-app:/var/www/html
+    ports:
+      - 80:80
+    restart: always
+    depends_on:
+      - php
+    networks:
+      - oney
+
+  php:
+    build:
+      context: ..
+      dockerfile: docker/php/Dockerfile
+    container_name: oney-app
+    ports:
+      - 9000:9000
+    expose:
+      - 9000
+    volumes:
+      - my-app:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - oney
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: oney-mysql
+    environment:
+      MYSQL_DATABASE: 'oney_trust'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'user'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - oney
+
+  python:
+    build:
+      context: ..
+      dockerfile: docker/python/Dockerfile
+    container_name: oney-python
+    ports:
+      - 5000:5000
+    expose:
+      - 5000
+    volumes:
+      - my-py:/var/www/html
+    networks:
+      - oney
+
+networks:
+  oney:
+    driver: "bridge"
+volumes:
+  my-db:
+  my-app:
+  my-py:
