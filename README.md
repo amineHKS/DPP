@@ -9,7 +9,7 @@ Docker - Php - Python
 
 # Setup
 
-    git clone git@github.com:amineHKS/DPP.git cd DPP/docker/
+    git clone git@github.com:amineHKS/DPP.git && cd DPP/docker/ 
 
 
     docker-compose build --no-cache && docker-compose up -d --force-recreate
